@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
-
     <property resource="application.properties"/>
 
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
@@ -11,8 +10,11 @@
         </encoder>
     </appender>
 
+<!--    <appender name="METRICS" class="io.prometheus.client.logback.InstrumentedAppender" />-->
+
     <root level="INFO">
         <appender-ref ref="STDOUT"/>
+<!--        <appender-ref ref="METRICS"/>-->
     </root>
 
 </configuration>

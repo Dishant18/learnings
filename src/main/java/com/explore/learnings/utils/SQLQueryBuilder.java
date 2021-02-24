@@ -13,7 +13,7 @@ public class SQLQueryBuilder {
     }
 
     public static String selectQuery(String tableName, List<String> cols, List<String> comparisonCols, boolean all) {
-        String baseQuery = "SELECT " + (all ? String.join(",", cols) : "*") + " FROM " + tableName;
+        String baseQuery = "SELECT " + (all ? "*" : String.join(",", cols)) + " FROM " + tableName;
         if (isNull(comparisonCols) || comparisonCols.isEmpty()) return baseQuery;
         return baseQuery + " WHERE " + comparisonCols.stream().map(col -> col + "=:" + col).collect(Collectors.joining(" AND "));
     }
