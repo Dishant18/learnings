@@ -94,81 +94,75 @@
             <scope>test</scope>
         </dependency>
 
-<!--        &lt;!&ndash; Prometheus Dependencies &ndash;&gt;-->
-<!--        &lt;!&ndash; The client &ndash;&gt;-->
-<!--        <dependency>-->
-<!--            <groupId>io.prometheus</groupId>-->
-<!--            <artifactId>simpleclient</artifactId>-->
-<!--            <version>0.10.0</version>-->
-<!--        </dependency>-->
-<!--        &lt;!&ndash; Hotspot JVM metrics&ndash;&gt;-->
-<!--        <dependency>-->
-<!--            <groupId>io.prometheus</groupId>-->
-<!--            <artifactId>simpleclient_hotspot</artifactId>-->
-<!--            <version>0.10.0</version>-->
-<!--        </dependency>-->
-<!--        &lt;!&ndash; Exposition HTTPServer&ndash;&gt;-->
-<!--        <dependency>-->
-<!--            <groupId>io.prometheus</groupId>-->
-<!--            <artifactId>simpleclient_httpserver</artifactId>-->
-<!--            <version>0.10.0</version>-->
-<!--        </dependency>-->
-<!--        &lt;!&ndash; Pushgateway exposition&ndash;&gt;-->
-<!--        <dependency>-->
-<!--            <groupId>io.prometheus</groupId>-->
-<!--            <artifactId>simpleclient_pushgateway</artifactId>-->
-<!--            <version>0.10.0</version>-->
-<!--        </dependency>-->
-<!--        <dependency>-->
-<!--            <groupId>io.prometheus</groupId>-->
-<!--            <artifactId>simpleclient_spring_web</artifactId>-->
-<!--            <version>0.10.0</version>-->
-<!--        </dependency>-->
-<!--&lt;!&ndash;        &lt;!&ndash; https://mvnrepository.com/artifact/io.prometheus/simpleclient_spring_boot &ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;        <dependency>&ndash;&gt;-->
-<!--&lt;!&ndash;            <groupId>io.prometheus</groupId>&ndash;&gt;-->
-<!--&lt;!&ndash;            <artifactId>simpleclient_spring_boot</artifactId>&ndash;&gt;-->
-<!--&lt;!&ndash;            <version>0.10.0</version>&ndash;&gt;-->
-<!--&lt;!&ndash;        </dependency>&ndash;&gt;-->
-
-<!--        &lt;!&ndash; https://mvnrepository.com/artifact/io.prometheus/simpleclient_logback &ndash;&gt;-->
-<!--        <dependency>-->
-<!--            <groupId>io.prometheus</groupId>-->
-<!--            <artifactId>simpleclient_logback</artifactId>-->
-<!--            <version>0.10.0</version>-->
-<!--        </dependency>-->
-
-<!--        <dependency>-->
-<!--            <groupId>io.prometheus</groupId>-->
-<!--            <artifactId>simpleclient_common</artifactId>-->
-<!--            <version>0.10.0</version>-->
-<!--        </dependency>-->
-
-<!--        <dependency>-->
-<!--            <groupId>org.springframework.metrics</groupId>-->
-<!--            <artifactId>spring-metrics</artifactId>-->
-<!--            <version>0.5.0.RELEASE</version>-->
-<!--        </dependency>-->
-
+        <!-- Prometheus Dependencies -->
+        <!-- The client -->
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-actuator</artifactId>
+            <groupId>io.prometheus</groupId>
+            <artifactId>simpleclient</artifactId>
+            <version>0.10.0</version>
+        </dependency>
+        <!-- Hotspot JVM metrics-->
+        <dependency>
+            <groupId>io.prometheus</groupId>
+            <artifactId>simpleclient_hotspot</artifactId>
+            <version>0.10.0</version>
+        </dependency>
+        <!-- Exposition HTTPServer-->
+        <dependency>
+            <groupId>io.prometheus</groupId>
+            <artifactId>simpleclient_httpserver</artifactId>
+            <version>0.10.0</version>
+        </dependency>
+        <!-- Pushgateway exposition-->
+        <dependency>
+            <groupId>io.prometheus</groupId>
+            <artifactId>simpleclient_pushgateway</artifactId>
+            <version>0.10.0</version>
+        </dependency>
+        <dependency>
+            <groupId>io.prometheus</groupId>
+            <artifactId>simpleclient_spring_web</artifactId>
+            <version>0.10.0</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/io.prometheus/simpleclient_spring_boot -->
+        <dependency>
+            <groupId>io.prometheus</groupId>
+            <artifactId>simpleclient_spring_boot</artifactId>
+            <version>0.10.0</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/io.prometheus/simpleclient_logback -->
+        <dependency>
+            <groupId>io.prometheus</groupId>
+            <artifactId>simpleclient_logback</artifactId>
+            <version>0.10.0</version>
         </dependency>
 
         <dependency>
-            <groupId>io.micrometer</groupId>
-            <artifactId>micrometer-core</artifactId>
+            <groupId>io.prometheus</groupId>
+            <artifactId>simpleclient_common</artifactId>
+            <version>0.10.0</version>
         </dependency>
 
-        <dependency>
-            <groupId>io.micrometer</groupId>
-            <artifactId>micrometer-registry-prometheus</artifactId>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.springframework.boot</groupId>-->
+<!--            <artifactId>spring-boot-starter-actuator</artifactId>-->
+<!--        </dependency>-->
 
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-aop</artifactId>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>io.micrometer</groupId>-->
+<!--            <artifactId>micrometer-core</artifactId>-->
+<!--        </dependency>-->
+
+<!--        <dependency>-->
+<!--            <groupId>io.micrometer</groupId>-->
+<!--            <artifactId>micrometer-registry-prometheus</artifactId>-->
+<!--        </dependency>-->
+
+<!--        <dependency>-->
+<!--            <groupId>org.springframework.boot</groupId>-->
+<!--            <artifactId>spring-boot-starter-aop</artifactId>-->
+<!--        </dependency>-->
 
     </dependencies>
 

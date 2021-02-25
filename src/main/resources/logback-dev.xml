@@ -10,11 +10,8 @@
         </encoder>
     </appender>
 
-<!--    <appender name="METRICS" class="io.prometheus.client.logback.InstrumentedAppender" />-->
-
     <root level="INFO">
         <appender-ref ref="STDOUT"/>
-<!--        <appender-ref ref="METRICS"/>-->
     </root>
 
 </configuration>

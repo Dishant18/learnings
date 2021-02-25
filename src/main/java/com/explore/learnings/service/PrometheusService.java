@@ -3,6 +3,9 @@ package com.explore.learnings.service;
 //import io.micrometer.core.instrument.Counter;
 //import io.micrometer.core.instrument.MeterRegistry;
 //import io.micrometer.core.instrument.Timer;
+import io.prometheus.client.Counter;
+import io.prometheus.client.Histogram;
+import io.prometheus.client.Summary;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.RandomUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,16 +23,16 @@ public class PrometheusService {
 //    @Autowired
 //    MeterRegistry meterRegistry;
 //
-//    public static Counter requests;
-//    public static Timer requestLatency;
+    public static Counter requests;
+    public static Histogram requestLatency;
 //
-//    @PostConstruct
-//    public void init() {
-//        requests = meterRegistry.counter("tot_requests_my");
-//        requestLatency = Timer.builder("tot_latency_my")
-//                .publishPercentiles(0.5, 0.95)
-//                .register(meterRegistry);
-//    }
+    @PostConstruct
+    public void init() {
+        requests = Counter.build("tot_requests_my", "total requests").register();
+        requestLatency = Histogram
+                .build("tot_req_lat_my", "tot req lat my")
+                .register();
+    }
 //
 //    public Mono<String> test() {
 //        int sleepDur = RandomUtils.nextInt() % 2000 + 100;
@@ -47,6 +50,8 @@ public class PrometheusService {
 //    }
 
     public Mono<String> test() {
+        requests.inc();
+        Histogram.Timer timer = requestLatency.startTimer();
         int sleepDur = RandomUtils.nextInt() % 2000 + 100;
         log.info("sleep dur: " + sleepDur);
         try {
@@ -54,6 +59,8 @@ public class PrometheusService {
             return Mono.just("test");
         } catch (Exception e) {
             return Mono.just("fail");
+        } finally {
+            timer.observeDuration();
         }
     }
 
