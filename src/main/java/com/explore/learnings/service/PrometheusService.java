@@ -14,7 +14,12 @@ import reactor.core.publisher.Mono;
 
 import javax.annotation.PostConstruct;
 
+import java.util.Random;
+
+import static com.explore.learnings.utils.PromConstants.reportLatency;
+import static java.lang.System.nanoTime;
 import static java.lang.Thread.sleep;
+import static reactor.core.publisher.Mono.just;
 
 @Slf4j
 @Service
@@ -23,16 +28,6 @@ public class PrometheusService {
 //    @Autowired
 //    MeterRegistry meterRegistry;
 //
-    public static Counter requests;
-    public static Histogram requestLatency;
-//
-    @PostConstruct
-    public void init() {
-        requests = Counter.build("tot_requests_my", "total requests").register();
-        requestLatency = Histogram
-                .build("tot_req_lat_my", "tot req lat my")
-                .register();
-    }
 //
 //    public Mono<String> test() {
 //        int sleepDur = RandomUtils.nextInt() % 2000 + 100;
@@ -50,17 +45,25 @@ public class PrometheusService {
 //    }
 
     public Mono<String> test() {
-        requests.inc();
-        Histogram.Timer timer = requestLatency.startTimer();
+        long start = nanoTime();
         int sleepDur = RandomUtils.nextInt() % 2000 + 100;
         log.info("sleep dur: " + sleepDur);
         try {
             sleep(sleepDur);
-            return Mono.just("test");
+            return just("test");
         } catch (Exception e) {
-            return Mono.just("fail");
+            return just("fail");
         } finally {
-            timer.observeDuration();
+            reportLatency("test_service", start);
+        }
+    }
+
+    public Mono<String> something() {
+        long start = nanoTime();
+        try {
+            return just("something");
+        } finally {
+            reportLatency("something_service", start);
         }
     }
 
