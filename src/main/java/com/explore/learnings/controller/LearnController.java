@@ -46,6 +46,6 @@ public class LearnController {
             e.printStackTrace();
         }
         System.out.println("Returning method SAR: " + id + " thread: " + Thread.currentThread().getName());
-        return CompletableFuture.completedFuture("Return " + id);
+        return CompletableFuture.completedFuture("Returning " + id);
     }
 }
