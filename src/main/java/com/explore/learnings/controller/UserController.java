@@ -1,6 +1,5 @@
 package com.explore.learnings.controller;
 
-import com.explore.learnings.model.User;
 import com.explore.learnings.model.req.SignUpReq;
 import com.explore.learnings.repository.UserDB;
 import com.explore.learnings.service.TokenService;
@@ -34,23 +33,23 @@ public class UserController {
     @Autowired
     private TokenService tokenService;
 
-    @PostMapping(value = "/signUp")
-    public Mono<Void> signUp(@RequestBody SignUpReq signUp) {
-        Mono<Void> userMono = userService.upsertUser(signUp);
-        return userMono
-                .doOnSuccess(__ -> {
-                    log.info("Executing get user");
-                    userService.getUserByEmail(signUp.email())
-                            .filter(Optional::isPresent)
-                            .map(Optional::get)
-                            .flatMap(user -> {
-                                log.info("Executing token thingy");
-                                return tokenService.insertTokenIfNotPresent(user.userId())
-                                        .log();
-                            })
-                            .subscribe();
-                });
-    }
+//    @PostMapping(value = "/signUp")
+//    public Mono<Void> signUp(@RequestBody SignUpReq signUp) {
+//        Mono<Void> userMono = userService.upsertUser(signUp);
+//        return userMono
+//                .doOnSuccess(__ -> {
+//                    log.info("Executing get user");
+//                    userService.getUserByEmail(signUp.email())
+//                            .filter(Optional::isPresent)
+//                            .map(Optional::get)
+//                            .flatMap(user -> {
+//                                log.info("Executing token thingy");
+//                                return tokenService.insertTokenIfNotPresent(user.userId())
+//                                        .log();
+//                            })
+//                            .subscribe();
+//                });
+//    }
 
     @GetMapping(value = "/learn")
     public Mono<Void> learn() {
@@ -124,14 +123,14 @@ public class UserController {
         return user;
     }
 
-    public Flux<User> getUsers(List<String> emails) {
-        return Flux.fromIterable(emails)
-                .flatMap(this::getUserAvi);
-    }
-
-    public Mono<User> getUserAvi(String email) {
-        return userService.getUser(email);
-    }
+//    public Flux<User> getUsers(List<String> emails) {
+//        return Flux.fromIterable(emails)
+//                .flatMap(this::getUserAvi);
+//    }
+//
+//    public Mono<User> getUserAvi(String email) {
+//        return userService.getUser(email);
+//    }
 
 //    @GetMapping(value = "/user/{identifier}")
 //    public Mono<ResponseEntity> getUser(@PathVariable String identifier) {
