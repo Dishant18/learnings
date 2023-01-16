@@ -8,13 +8,15 @@ jobs:
     runs-on: ubuntu-latest
     name: release_pull_request
     steps:
-      - name: checkout
-        uses: actions/checkout@v1
-      - name: Create PR to branch
-        uses: gorillio/github-action-cherry-pick@master
+      - name: Run the Action
+        uses: devops-infra/action-pull-request@v0.5.3
         with:
-          pr_branch: 'test_2'
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GITBOT_EMAIL: dishantt@flock.com
-          DRY_RUN: false
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          source_branch: test_1
+          target_branch: test_2
+          title: My pull request
+          body: "**Automated pull request**"
+          reviewer: Dishant18
+          assignee: Dishant18
+          get_diff: true
+          allow_no_diff: false
