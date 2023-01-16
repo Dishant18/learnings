@@ -2,6 +2,6 @@ package com.explore.learnings.model;
 
 public class notIgnore {
 
-  private Integer tryyyAgainAgain;
+  private Integer tryyAgainAgain;
 
 }
